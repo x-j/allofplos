@@ -57,13 +57,12 @@ CORPUS_URL = "https://allof.plos.org/allofplos.zip"
 FILENAME = "allofplos.zip"
 
 
-def download_corpus_zip():
+def download_corpus_zip(directory = get_corpus_dir()):
     """
     Download corpus zip.
+    :param directory: destination where the zip file will be downloaded to
     :return: path to zip file
     """
-    directory = get_corpus_dir()
-
     file_path = os.path.join(directory, FILENAME)
     extension = os.path.splitext(file_path)[1]
 
