@@ -633,7 +633,7 @@ def download_check_and_move(article_list, proof_filepath, tempdir, destination):
     move_articles(tempdir, destination)
 
 
-def create_local_plos_corpus(directory=None, rm_metadata=True, unzip=True, delete_file=True):
+def create_local_plos_corpus(directory=None, rm_metadata=True, unzip=False, delete_file=True):
     """
     Downloads a fresh copy of the PLOS corpus by:
     1) creating directory if it doesn't exist
@@ -641,9 +641,9 @@ def create_local_plos_corpus(directory=None, rm_metadata=True, unzip=True, delet
     2) downloading the zip file (defaults to corpus directory)
     3) extracting the individual XML files into the corpus directory
     :param directory: directory where the corpus is to be downloaded and extracted
-    :param rm_metadata: COMPLETE HERE
-    :param unzip: whether to extract article files to corpus dir, or just keep the zip file instead. Defaults to `True`
-    :param delete_file: whether to delete the compressed archive after extracting articles. Defaults to `True`
+    :param rm_metadata: not used anymore
+    :param unzip: whether to extract article files to corpus dir, or just keep the zip file instead. Defaults to `False` - allofplos.zip will not be unpacked.
+    :param delete_file: whether to delete the compressed archive after extracting articles. Defaults to `True` - allofplos.zip will be deleted after extraction.
     :return: None
     """
     if directory is None:
@@ -654,4 +654,3 @@ def create_local_plos_corpus(directory=None, rm_metadata=True, unzip=True, delet
     zip_path = download_corpus_zip()
     if unzip:
         unzip_articles(file_path=zip_path, extract_directory=get_corpus_dir(), delete_file=delete_file)
-
